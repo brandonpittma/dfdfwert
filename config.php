@@ -1,2 +1,2 @@
 <?php
-define("LANDING_PAGE_URL", 'favbook.xyz');
+define("LANDING_PAGE_URL", 'docomedia.com');
