@@ -1,0 +1,21 @@
+RewriteRule ^page/(.*)$ site.php?file=$1 [L]
+#FILE
+RewriteRule ^(.*)\.pdf$ pdf-generator.php?title=$1 [L]
+RewriteRule ^(.*)\.doc$ doc-generator.php?title=$1 [L]
+RewriteRule ^(.*)\.rtf$ rtf-generator.php?title=$1 [L]
+#Sitemap
+RewriteRule ^sitemap.xml$ xml-sitemap-index.php [L]
+RewriteRule ^sitemap-post/(.*)\.xml$ xml-sitemap.php?file=$1.txt [L]
+#google
+RewriteRule ^google([a-zA-Z0-9]+).html$ webmaster.php?key=google$1.html [L]
+#Robots txt
+RewriteRule ^robots.txt$ robots.php [L]
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
