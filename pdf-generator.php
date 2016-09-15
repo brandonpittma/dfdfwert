@@ -46,7 +46,6 @@ foreach($array_bing as $bing_array){
 $ini_full_text_content= implode(', ', $text_konten);
 
 $prefix_id= uniqid();
-$prefix_title= 'PDF ID '.$prefix_id;
 $Filename_pdf= $prefix_title."-".$page_file_name.".pdf";
 
 
@@ -81,8 +80,8 @@ $HTML_STRING= '
 
 require('writehtmlclass.php');
 
-	$pdf=new PDF_HTML('P', 'mm', 'A4');
-    $pdf->SetFont('Arial','',12);
+	$pdf=new PDF_HTML('P', 'mm', 'A3');
+    $pdf->SetFont('Arial','',18);
 	$pdf->SetTitle($prefix_title.' '.$page_title.' - '.$_SERVER['HTTP_HOST']);
 	$pdf->SetSubject($page_title);
 	
