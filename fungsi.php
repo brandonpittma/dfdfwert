@@ -12,10 +12,14 @@ return $in_file;
 }
 
 function is_bot(){
-if(isset($_SERVER['HTTP_FROM']) && !empty($_SERVER['HTTP_FROM'])){
-	return preg_match("/(googlebot|google|bingbot|microsoft.com|msnbot|msn|bing|search.yandex.ru|yahoo)/i", $_SERVER['HTTP_FROM']);
-}
- return false;
+	if(!isset($_SERVER['HTTP_USER_AGENT'])){
+	return false;
+	}
+	if(empty($_SERVER['HTTP_USER_AGENT'])){
+	return false;
+	}
+$patern= 'duckduckgo|bot|google|yandex|bing|yahoo|msn|image|preview|partner|bingpreview|bingbot|msnbot';
+return preg_match('/('.$patern.')/i', $_SERVER['HTTP_USER_AGENT']);
 }
 
 function canonical(){
