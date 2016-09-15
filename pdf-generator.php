@@ -71,7 +71,7 @@ $loploplop = implode(' | ', $loploplop);
 ?>
 <?php
 $HTML_STRING= '
-<h1>'.$prefix_title.' '.$page_title.' - '.$_SERVER['SERVER_NAME'].'</h1>
+<h1><b><i>'.$prefix_title.' '.$page_title.' - '.$_SERVER['SERVER_NAME'].'</i></b></h1>
 
 <p>'.$ini_full_text_content.'</p>
 <br><br>
