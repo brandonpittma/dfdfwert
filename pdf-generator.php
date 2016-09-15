@@ -80,13 +80,13 @@ $HTML_STRING= '
 
 require('writehtmlclass.php');
 
-	$pdf=new PDF_HTML('P', 'mm', 'A3');
-    $pdf->SetFont('Arial','',18);
+	$pdf=new PDF_HTML('P', 'mm', 'A5');
+    $pdf->SetFont('Arial','',9);
 	$pdf->SetTitle($prefix_title.' '.$page_title.' - '.$_SERVER['HTTP_HOST']);
 	$pdf->SetSubject($page_title);
 	$pdf->SetAuthor($author);
 	$pdf->SetCreator($_SERVER['HTTP_HOST']);
-	$pdf->SetKeywords Download Or Read Online ($page_title);
+	$pdf->SetKeywords($page_title);
 	$pdf->AddPage();
 	$htmla = $HTML_STRING;
 	if(ini_get('magic_quotes_gpc')=='1')
