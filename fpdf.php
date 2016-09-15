@@ -7,7 +7,7 @@
 * Author:  Olivier PLATHEY                                                     *
 *******************************************************************************/
 
-define('FPDF_VERSION','1.7');
+define('FPDF_VERSION','1.8');
 
 class FPDF
 {
@@ -164,7 +164,7 @@ function FPDF($orientation='P', $unit='mm', $size='A4')
 	// Enable compression
 	$this->SetCompression(true);
 	// Set default PDF version number
-	$this->PDFVersion = '1.3';
+	$this->PDFVersion = '1.8';
 }
 
 function SetMargins($left, $top, $right=null)
@@ -1497,7 +1497,7 @@ function _putpages()
 			}
 			$this->_out($annots.']');
 		}
-		if($this->PDFVersion>'1.3')
+		if($this->PDFVersion>'1.8')
 			$this->_out('/Group <</Type /Group /S /Transparency /CS /DeviceRGB>>');
 		$this->_out('/Contents '.($this->n+1).' 0 R>>');
 		$this->_out('endobj');
