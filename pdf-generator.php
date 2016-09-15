@@ -84,7 +84,8 @@ require('writehtmlclass.php');
     $pdf->SetFont('Arial','',18);
 	$pdf->SetTitle($prefix_title.' '.$page_title.' - '.$_SERVER['HTTP_HOST']);
 	$pdf->SetSubject($page_title);
-	
+	$pdf->SetAuthor($author);
+	$pdf->SetCreator($_SERVER['HTTP_HOST']);	
 	$pdf->AddPage();
 	$htmla = $HTML_STRING;
 	if(ini_get('magic_quotes_gpc')=='1')
