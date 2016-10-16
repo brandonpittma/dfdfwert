@@ -1,2 +1,2 @@
 <?php
-define("LANDING_PAGE_URL", 'docomedia.com');
+define("LANDING_PAGE_URL", 'nowbook.top/download/');
