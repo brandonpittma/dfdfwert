@@ -41,11 +41,11 @@ foreach($array_bing as $bing_array){
 
 $ini_full_text_content= implode(', ', $text_konten);
 
-$Filename_rtf= $prefix_title."-".$page_file_name.".rtf";
+$Filename_doc= $prefix_title."-".$page_file_name.".doc";
 
 
     header("Content-type: application/vnd.ms-word.document.macroEnabled.12");
-    header("Content-Disposition: attachment; Filename=".$Filename_rtf);
+    header("Content-Disposition: attachment; Filename=".$Filename_doc);
     header('Expires: Thu, 01-Jan-2020 00:00:01 GMT');
     header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
     header('X-Robots-Tag: noarchive,notranslate,noodp', true);
@@ -72,7 +72,7 @@ echo '<aside><ul>';
 foreach($ini_r_key as $items){
 $title= trim(preg_replace("![^a-z0-9]+!i", " ", $items));
 $slug_posting= str_replace(' ', '-', $title);//spasi to -
-$permalink= '/'.$slug_posting.'.rtf';//permalink type
+$permalink= '/'.$slug_posting.'.doc';//permalink type
 
 echo	'<li><a href="'.$http_home_domain.$permalink.'" title="'.$title.'">'.$title.'</a></li>';
 }
