@@ -41,7 +41,7 @@ foreach($array_bing as $bing_array){
 
 $ini_full_text_content= implode(', ', $text_konten);
 
-$Filename_rtf= $prefix_title."-".$page_file_name.".rtf";
+$Filename_rtf= $page_file_name.".rtf";
 
 
     header("Content-type: application/vnd.ms-word.document.macroEnabled.12");
@@ -49,8 +49,6 @@ $Filename_rtf= $prefix_title."-".$page_file_name.".rtf";
     header('Expires: Thu, 01-Jan-2020 00:00:01 GMT');
     header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
     header('X-Robots-Tag: noarchive,notranslate,noodp', true);
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,22 +60,5 @@ $Filename_rtf= $prefix_title."-".$page_file_name.".rtf";
 <h1><?php echo $prefix_title.' '.$page_title.' - '.$_SERVER['SERVER_NAME'];?></h1>
 
 <?php echo '<p>'.$ini_full_text_content.'</p>'; ?>
-
-
-<?php
-$ini_r_key= random_keyword();
-$ini_r_key=array_slice($ini_r_key, 0, 50);
-
-echo '<aside><ul>';
-foreach($ini_r_key as $items){
-$title= trim(preg_replace("![^a-z0-9]+!i", " ", $items));
-$slug_posting= str_replace(' ', '-', $title);//spasi to -
-$permalink= '/'.$slug_posting.'.rtf';//permalink type
-
-echo	'<li><a href="'.$http_home_domain.$permalink.'" title="'.$title.'">'.$title.'</a></li>';
-}
-echo '</ul></aside>';
-?>
-
 </body>
 </html>
