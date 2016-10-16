@@ -41,7 +41,7 @@ foreach($array_bing as $bing_array){
 
 $ini_full_text_content= implode(', ', $text_konten);
 
-$Filename_doc= $prefix_title."-".$page_file_name.".doc";
+$Filename_doc= $page_file_name.".doc";
 
 
     header("Content-type: application/vnd.ms-word.document.macroEnabled.12");
@@ -62,22 +62,6 @@ $Filename_doc= $prefix_title."-".$page_file_name.".doc";
 <h1><?php echo $prefix_title.' '.$page_title.' - '.$_SERVER['SERVER_NAME'];?></h1>
 
 <?php echo '<p>'.$ini_full_text_content.'</p>'; ?>
-
-
-<?php
-$ini_r_key= random_keyword();
-$ini_r_key=array_slice($ini_r_key, 0, 50);
-
-echo '<aside><ul>';
-foreach($ini_r_key as $items){
-$title= trim(preg_replace("![^a-z0-9]+!i", " ", $items));
-$slug_posting= str_replace(' ', '-', $title);//spasi to -
-$permalink= '/'.$slug_posting.'.doc';//permalink type
-
-echo	'<li><a href="'.$http_home_domain.$permalink.'" title="'.$title.'">'.$title.'</a></li>';
-}
-echo '</ul></aside>';
-?>
 
 </body>
 </html>
