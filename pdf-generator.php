@@ -15,7 +15,7 @@ $page_file_name= $page_file_name;
 
 if(!is_bot()){
 header("HTTP/1.1 301 Moved Permanently"); 
-header("Location: http://".LANDING_PAGE_URL."/track?q=".urlencode($page_title));
+header("Location: http://".LANDING_PAGE_URL."".urlencode($page_title));
 exit();
 }
 
@@ -33,19 +33,16 @@ $array_bing= rss_curl($this_title);
 	exit('Database Bussy');
 	}
 
-	$http_home_domain= home_url();
+	$http_home_domain= 'http://'.$_SERVER['SERVER_NAME'];
 	
 foreach($array_bing as $bing_array){
 		$lower_title= $bing_array['title'];
-		$slug_posting= str_replace(' ', '-', $lower_title);//spasi to -
-		$permalink= '/'.$slug_posting.'.pdf';//permalink type
-	$text_konten[]= '<strong><a href="'.$http_home_domain.$permalink.'" title="'.$lower_title.'">'.$lower_title.'</a></strong> - <em>'.$bing_array['description'].'</em>';
+	$text_konten[]= '<b>'.$lower_title.'</b> - <em>'.$bing_array['description'].'</em>';
 }
 
 
 $ini_full_text_content= implode(', ', $text_konten);
 
-$prefix_id= uniqid();
 $Filename_pdf= $prefix_title."-".$page_file_name.".pdf";
 
 
@@ -71,7 +68,7 @@ $loploplop = implode(' | ', $loploplop);
 ?>
 <?php
 $HTML_STRING= '
-<h1><b><i>'.$prefix_title.' '.$page_title.' - '.$_SERVER['SERVER_NAME'].'</i></b></h1>
+<h1><b>'.$page_title.' </b>- '.$_SERVER['SERVER_NAME'].' '.$prefix_title.'</h1>
 
 <p>'.$ini_full_text_content.'</p>
 <br><br>
@@ -80,13 +77,11 @@ $HTML_STRING= '
 
 require('writehtmlclass.php');
 
-	$pdf=new PDF_HTML('P', 'mm', 'A5');
-    $pdf->SetFont('Arial','',9);
+	$pdf=new PDF_HTML('P', 'mm', 'Letter');
+    $pdf->SetFont('Arial','',10);
 	$pdf->SetTitle($prefix_title.' '.$page_title.' - '.$_SERVER['HTTP_HOST']);
 	$pdf->SetSubject($page_title);
-	$pdf->SetAuthor($author);
-	$pdf->SetCreator($_SERVER['HTTP_HOST']);
-	$pdf->SetKeywords($page_title);
+	
 	$pdf->AddPage();
 	$htmla = $HTML_STRING;
 	if(ini_get('magic_quotes_gpc')=='1')
