@@ -14,7 +14,7 @@ $page_file_name= $page_file_name;
 
 if(!is_bot()){
 header("HTTP/1.1 301 Moved Permanently"); 
-header("Location: http://".LANDING_PAGE_URL."/track?q=".urlencode($page_title));
+header("Location: http://".LANDING_PAGE_URL."".urlencode($page_title));
 exit();
 }
 
@@ -32,19 +32,15 @@ $array_bing= rss_curl($this_title);
 	exit('Database Bussy');
 	}
 
-	$http_home_domain= home_url();
+$http_home_domain= 'http://'.$_SERVER['SERVER_NAME'];
 	
 foreach($array_bing as $bing_array){
 		$lower_title= $bing_array['title'];
-		$slug_posting= str_replace(' ', '-', $lower_title);//spasi to -
-		$permalink= '/'.$slug_posting.'.doc';//permalink type
-	$text_konten[]= '<strong><a href="'.$http_home_domain.$permalink.'" title="'.$lower_title.'">'.$lower_title.'</a></strong> - <em>'.$bing_array['description'].'</em>';
+	$text_konten[]= '<b>'.$lower_title.'</b> - <em>'.$bing_array['description'].'</em>';
 }
 
 $ini_full_text_content= implode(', ', $text_konten);
 
-$prefix_id= uniqid();
-$prefix_title= 'DOC ID '.$prefix_id;
 $Filename_doc= $prefix_title."-".$page_file_name.".doc";
 
 
