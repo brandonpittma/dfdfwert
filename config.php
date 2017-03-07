@@ -1,2 +1,2 @@
 <?php
-define("LANDING_PAGE_URL", 'yourebooklibrary.xyz/download/');
+define("LANDING_PAGE_URL", 'mediaz.us/download/');
